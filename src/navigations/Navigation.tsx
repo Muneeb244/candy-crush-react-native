@@ -1,11 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SplashScreen from '../screens/SplashScreen';
+import { StyleSheet } from 'react-native';
+import GameScreen from '../screens/GameScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LevelScreen from '../screens/LevelScreen';
-import GameScreen from '../screens/GameScreen';
+import SplashScreen from '../screens/SplashScreen';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -16,10 +15,29 @@ const Navigation = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="splashScreen" component={SplashScreen} />
-      <Stack.Screen name="homeScreen" component={HomeScreen} />
-      <Stack.Screen name="levelScreen" component={LevelScreen} />
-      <Stack.Screen name="gameScreen" component={GameScreen} />
+      <Stack.Screen
+        name="splashScreen"
+        component={SplashScreen}
+      />
+      <Stack.Screen
+        name="homeScreen"
+        options={{
+          animation: 'fade',
+        }}
+        component={HomeScreen}
+      />
+      <Stack.Screen
+        name="levelScreen"
+        options={{
+          animation: 'fade',
+        }}
+        component={LevelScreen} />
+      <Stack.Screen
+        name="gameScreen"
+        options={{
+          animation: 'fade',
+        }}
+        component={GameScreen} />
     </Stack.Navigator>
   );
 };

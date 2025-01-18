@@ -1,14 +1,30 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import React, {FC, useEffect} from 'react';
+import {commonStyles} from '../styles/commonStyles';
+import { resetAndNavigate } from '../utils/NavigationUtil';
 
-const SplashScreen = () => {
+const SplashScreen: FC = () => {
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      resetAndNavigate('homeScreen')
+    }, 2000)
+
+    return(() => clearTimeout(timerId))
+  })
+
   return (
-    <View>
-      <Text style={{color: 'red'}}>SplashScreen</Text>
-    </View>
-  )
-}
+    <ImageBackground
+      source={require('../assets/images/bg.png')}
+      style={commonStyles.container}>
+      <Image
+        source={require('../assets/text/logo.png')}
+        style={commonStyles.img}
+      />
+    </ImageBackground>
+  );
+};
 
-export default SplashScreen
+export default SplashScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
