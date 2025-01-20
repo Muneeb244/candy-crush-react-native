@@ -18,7 +18,7 @@ import { gameLevels } from '../utils/data';
 const LevelScreen: FC = () => {
   const {levels} = useLevelStore();
 
-  const handleLevelPress = item => {
+  const handleLevelPress = (item: any) => {
     if (item?.unlocked) {
     const levelKey = `level${item?.id}` as keyof GameLevels;
     const level = gameLevels[levelKey];
